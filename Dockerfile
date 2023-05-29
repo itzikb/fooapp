@@ -7,7 +7,7 @@ FROM python
 #COPY requirements.txt .
 #COPY flask_app.py .
 #COPY templates .
-RUN useradd -ms /bin/bash ubuntu
+#RUN useradd -ms /bin/bash ubuntu
 
 #RUN whoami
 #RUN cat /etc/resolv.conf
@@ -19,8 +19,8 @@ RUN useradd -ms /bin/bash ubuntu
 EXPOSE 8000
 STOPSIGNAL SIGINT
 
-USER ubuntu
-WORKDIR /home/ubuntu
-RUN echo 'hello' > index.html
+#USER ubuntu
+WORKDIR /tmp
+RUN echo 'hello' > /tmp/index.html
 #ENTRYPOINT ["python3"]
 CMD ["python","-m","http.server"]
