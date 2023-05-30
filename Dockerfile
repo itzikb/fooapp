@@ -7,7 +7,7 @@ COPY flask_app.py .
 COPY templates .
 RUN useradd -ms /bin/bash ubuntu
 
-#UN apt-get update && apt-get install -y pip
+RUN apt-get update && apt-get install -y pip
 RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED 1
 
