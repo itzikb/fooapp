@@ -1,6 +1,6 @@
 #FROM python:3.6-slim
 #FROM ubuntu
-FROM python
+FROM docker.io/library/python
 
 #RUN mkdir /application
 #WORKDIR /application
