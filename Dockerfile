@@ -1,26 +1,11 @@
-#FROM python:3.6-slim
-#FROM ubuntu
-FROM python
-
-#RUN mkdir /application
-#WORKDIR /application
-#COPY requirements.txt .
-#COPY flask_app.py .
-#COPY templates .
-#RUN useradd -ms /bin/bash ubuntu
-
-#RUN whoami
-#RUN cat /etc/resolv.conf
-#RUN apt-get update && apt-get install -y pip
-#RUN pip install -r requirements.txt
-#ENV PYTHONUNBUFFERED 1
-
-#EXPOSE 8001
+FROM alpine:latest
 EXPOSE 8000
-STOPSIGNAL SIGINT
-
-#USER ubuntu
 WORKDIR /tmp
 RUN echo 'hello' > /tmp/index.html
-#ENTRYPOINT ["python3"]
-CMD ["python","-m","http.server"]
+
+RUN apk --no-cache -U add python3 && \
+    apk upgrade --no-cache -U -a
+# Patch OpenSSL vulnerability^
+
+RUN apk --no-cache -U add python3
+ENTRYPOINT [ "python3", "-m", "http.server", "8000" ]
